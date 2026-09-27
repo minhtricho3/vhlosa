@@ -1,0 +1,55 @@
+{
+  "profile": {
+    "name": "Osa",
+    "kicker": "Xin chào, mình là",
+    "role": "Software Engineer — xây dựng sản phẩm web nhanh, gọn và đáng tin cậy.",
+    "lede": "Mình thích những hệ thống chạy êm, những giao diện dễ dùng, và việc viết lại thứ gì đó cho tới khi nó thật sự đơn giản. Ngoài code, mình hay viết lại những gì học được ở phần Blog bên dưới.",
+    "bio": "Mình là Osa, kỹ sư phần mềm tập trung vào phát triển web full-stack. Mình thích làm việc ở những chi tiết nhỏ — hiệu năng tải trang, trạng thái rỗng, animation vừa đủ — vì đó thường là thứ người dùng cảm nhận được nhiều nhất dù không gọi tên ra được. Phần lớn thời gian mình làm việc với JavaScript/TypeScript, nhưng cũng thoải mái nhảy sang backend hoặc hạ tầng khi cần.",
+    "skills": ["TypeScript", "React", "Node.js", "Go", "PostgreSQL", "Docker", "AWS", "GraphQL"],
+    "avatar": "",
+    "email": "hello@osa.dev",
+    "github": "https://github.com/osa",
+    "linkedin": "https://linkedin.com/in/osa",
+    "contactText": "Đang có một dự án hay ho, hoặc chỉ muốn trò chuyện về kỹ thuật? Nhắn cho mình bất cứ lúc nào."
+  },
+  "projects": [
+    {
+      "title": "Tên dự án 1",
+      "description": "Mô tả ngắn về vấn đề dự án giải quyết và vai trò của bạn trong đó — một hoặc hai câu là đủ.",
+      "tags": ["React", "Node.js", "PostgreSQL"],
+      "link": "#"
+    },
+    {
+      "title": "Tên dự án 2",
+      "description": "Mô tả ngắn về vấn đề dự án giải quyết và vai trò của bạn trong đó — một hoặc hai câu là đủ.",
+      "tags": ["Next.js", "Go", "Redis"],
+      "link": "#"
+    },
+    {
+      "title": "Tên dự án 3",
+      "description": "Mô tả ngắn về vấn đề dự án giải quyết và vai trò của bạn trong đó — một hoặc hai câu là đủ.",
+      "tags": ["TypeScript", "AWS", "Docker"],
+      "link": "#"
+    }
+  ],
+  "posts": [
+    {
+      "title": "Tiêu đề bài viết đầu tiên",
+      "date": "2026-08-01",
+      "excerpt": "Một câu tóm tắt ngắn gọn nội dung bài viết, đủ để người đọc biết có nên bấm vào hay không.",
+      "link": "#"
+    },
+    {
+      "title": "Tiêu đề bài viết thứ hai",
+      "date": "2026-06-14",
+      "excerpt": "Một câu tóm tắt ngắn gọn nội dung bài viết, đủ để người đọc biết có nên bấm vào hay không.",
+      "link": "#"
+    },
+    {
+      "title": "Tiêu đề bài viết thứ ba",
+      "date": "2026-03-22",
+      "excerpt": "Một câu tóm tắt ngắn gọn nội dung bài viết, đủ để người đọc biết có nên bấm vào hay không.",
+      "link": "#"
+    }
+  ]
+}
