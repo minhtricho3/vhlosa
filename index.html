@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Osa — Software Engineer</title>
+<meta name="description" content="Trang cá nhân của Osa: dự án, bài viết và thông tin liên hệ." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0e14'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23ff9d3d'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#home" class="brand">Osa</a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList" aria-label="Mở menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="site-nav" id="navList">
+    <a href="#about" data-nav>Giới thiệu</a>
+    <a href="#work" data-nav>Dự án</a>
+    <a href="#blog" data-nav>Blog</a>
+    <a href="#contact" data-nav>Liên hệ</a>
+  </nav>
+</header>
+
+<div class="trace" aria-hidden="true"><span class="trace-pulse"></span></div>
+
+<main>
+
+  <section id="home" class="section hero">
+    <span class="node"></span>
+    <p class="kicker">Xin chào, mình là</p>
+    <h1>Osa</h1>
+    <p class="role">Software Engineer — xây dựng sản phẩm web nhanh, gọn và đáng tin cậy.</p>
+    <p class="lede">Mình thích những hệ thống chạy êm, những giao diện dễ dùng, và việc viết lại thứ gì đó cho tới khi nó thật sự đơn giản. Ngoài code, mình hay viết lại những gì học được ở phần Blog bên dưới.</p>
+    <div class="cta-row">
+      <a href="#work" class="btn btn-primary">Xem dự án</a>
+      <a href="#contact" class="btn btn-ghost">Liên hệ</a>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <span class="node"></span>
+    <h2>Giới thiệu</h2>
+    <div class="about-grid">
+      <p class="about-text">
+        Mình là Osa, kỹ sư phần mềm tập trung vào phát triển web full-stack. Mình thích làm việc ở những chi tiết nhỏ — hiệu năng tải trang, trạng thái rỗng, animation vừa đủ — vì đó thường là thứ người dùng cảm nhận được nhiều nhất dù không gọi tên ra được. Phần lớn thời gian mình làm việc với JavaScript/TypeScript, nhưng cũng thoải mái nhảy sang backend hoặc hạ tầng khi cần.
+      </p>
+      <ul class="skills">
+        <li>TypeScript</li>
+        <li>React</li>
+        <li>Node.js</li>
+        <li>Go</li>
+        <li>PostgreSQL</li>
+        <li>Docker</li>
+        <li>AWS</li>
+        <li>GraphQL</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="work" class="section">
+    <span class="node"></span>
+    <h2>Dự án</h2>
+    <div class="work-grid">
+
+      <article class="project">
+        <h3>Tên dự án 1</h3>
+        <p>Mô tả ngắn về vấn đề dự án giải quyết và vai trò của bạn trong đó — một hoặc hai câu là đủ.</p>
+        <ul class="tags">
+          <li>React</li><li>Node.js</li><li>PostgreSQL</li>
+        </ul>
+        <a href="#" class="project-link">Xem chi tiết</a>
+      </article>
+
+      <article class="project">
+        <h3>Tên dự án 2</h3>
+        <p>Mô tả ngắn về vấn đề dự án giải quyết và vai trò của bạn trong đó — một hoặc hai câu là đủ.</p>
+        <ul class="tags">
+          <li>Next.js</li><li>Go</li><li>Redis</li>
+        </ul>
+        <a href="#" class="project-link">Xem chi tiết</a>
+      </article>
+
+      <article class="project">
+        <h3>Tên dự án 3</h3>
+        <p>Mô tả ngắn về vấn đề dự án giải quyết và vai trò của bạn trong đó — một hoặc hai câu là đủ.</p>
+        <ul class="tags">
+          <li>TypeScript</li><li>AWS</li><li>Docker</li>
+        </ul>
+        <a href="#" class="project-link">Xem chi tiết</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="blog" class="section">
+    <span class="node"></span>
+    <h2>Blog</h2>
+    <div class="post-list">
+
+      <a href="#" class="post-row">
+        <div class="post-head">
+          <h3>Tiêu đề bài viết đầu tiên</h3>
+          <time class="post-date" datetime="2026-08-01">01.08.2026</time>
+        </div>
+        <p>Một câu tóm tắt ngắn gọn nội dung bài viết, đủ để người đọc biết có nên bấm vào hay không.</p>
+      </a>
+
+      <a href="#" class="post-row">
+        <div class="post-head">
+          <h3>Tiêu đề bài viết thứ hai</h3>
+          <time class="post-date" datetime="2026-06-14">14.06.2026</time>
+        </div>
+        <p>Một câu tóm tắt ngắn gọn nội dung bài viết, đủ để người đọc biết có nên bấm vào hay không.</p>
+      </a>
+
+      <a href="#" class="post-row">
+        <div class="post-head">
+          <h3>Tiêu đề bài viết thứ ba</h3>
+          <time class="post-date" datetime="2026-03-22">22.03.2026</time>
+        </div>
+        <p>Một câu tóm tắt ngắn gọn nội dung bài viết, đủ để người đọc biết có nên bấm vào hay không.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <span class="node"></span>
+    <h2>Liên hệ</h2>
+    <div class="contact-grid">
+      <p class="contact-text">Đang có một dự án hay ho, hoặc chỉ muốn trò chuyện về kỹ thuật? Nhắn cho mình bất cứ lúc nào.</p>
+      <ul class="contact-list">
+        <li><a href="mailto:hello@osa.dev">hello@osa.dev</a></li>
+        <li><a href="https://github.com/osa" target="_blank" rel="noreferrer">github.com/osa</a></li>
+        <li><a href="https://linkedin.com/in/osa" target="_blank" rel="noreferrer">linkedin.com/in/osa</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Osa. Được xây bằng HTML, CSS và JavaScript thuần.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
