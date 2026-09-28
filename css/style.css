@@ -88,4 +88,3 @@ footer{text-align:center;padding:40px 5vw 60px;opacity:.7}
 @keyframes spark{to{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
 
 @media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center;padding-top:100px}.lead{margin:0 auto}.cta{justify-content:center}.avatar-wrap{order:-1;--w:min(230px,56vw)}.chip{font-size:.8rem;padding:6px 12px}nav div a{margin-left:12px;font-size:.9rem}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hl{background-size:100% 100%}}

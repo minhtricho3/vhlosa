@@ -1,5 +1,5 @@
 const $ = (s, r = document) => r.querySelector(s);
-const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const still = false;
 $('#y').textContent = new Date().getFullYear();
 
 // Gõ chữ luân phiên (sửa danh sách vai trò ở đây)
