@@ -31,9 +31,11 @@
   <div class="avatar-wrap">
     <div class="blob"></div><div class="ring"></div>
     <img class="avatar" src="assets/avatar.png" alt="Ảnh đại diện của Osa">
-    <span class="chip c1">☕ cà phê sáng</span>
-    <span class="chip c2">🎧 lo-fi</span>
-    <span class="chip c3">🌙 code đêm</span>
+    <div class="orbit" aria-hidden="true">
+      <div class="slot" style="--a:0deg"><span class="chip">☕ cà phê sáng</span></div>
+      <div class="slot" style="--a:120deg"><span class="chip">🎧 lo-fi</span></div>
+      <div class="slot" style="--a:240deg"><span class="chip">🌙 code đêm</span></div>
+    </div>
   </div>
 </header>
 
@@ -58,17 +60,13 @@
 
   <section id="projects" class="rv">
     <h2>Dự <mark class="hl h2">án</mark></h2>
-    <div class="grid">
-      <a class="card tilt" href="#" style="--c:#ffb38a"><div class="thumb"></div><h3>Trang bán hàng Mây</h3><p>Cửa hàng nhỏ với giao diện pastel và giỏ hàng mượt.</p></a>
-      <a class="card tilt" href="#" style="--c:#8ff0c8"><div class="thumb"></div><h3>Ứng dụng ghi chú Đêm</h3><p>Ghi chú nhanh, chế độ tối và đồng bộ theo thời gian thực.</p></a>
-      <a class="card tilt" href="#" style="--c:#b9a4ff"><div class="thumb"></div><h3>Blog ảnh Phố nhỏ</h3><p>Bộ sưu tập ảnh đường phố với hiệu ứng cuộn nhẹ nhàng.</p></a>
-    </div>
+    <div class="grid" id="projects-list"></div>
   </section>
 
   <section id="contact" class="rv">
     <h2>Cùng làm gì đó <mark class="hl">vui</mark> nhé</h2>
-    <p>Gửi mình một dòng qua <mark class="hl h2"><a href="mailto:osa@example.com">osa@example.com</a></mark> hoặc ghé các kênh bên dưới.</p>
-    <div class="links"><a href="#">GitHub</a><a href="#">Instagram</a><a href="#">Facebook</a></div>
+    <p>Gửi mình một dòng qua <mark class="hl h2"><a id="mail" href="#"></a></mark> hoặc ghé các kênh bên dưới.</p>
+    <div class="links" id="links"></div>
   </section>
 </main>
 

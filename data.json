@@ -1,0 +1,15 @@
+{
+  "contact": {
+    "email": "osa@example.com",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/" },
+      { "label": "Instagram", "url": "https://instagram.com/" },
+      { "label": "Facebook", "url": "https://facebook.com/" }
+    ]
+  },
+  "projects": [
+    { "title": "Trang bán hàng Mây", "description": "Cửa hàng nhỏ với giao diện pastel và giỏ hàng mượt.", "url": "#", "color": "#ffb38a" },
+    { "title": "Ứng dụng ghi chú Đêm", "description": "Ghi chú nhanh, chế độ tối và đồng bộ theo thời gian thực.", "url": "#", "color": "#8ff0c8" },
+    { "title": "Blog ảnh Phố nhỏ", "description": "Bộ sưu tập ảnh đường phố với hiệu ứng cuộn nhẹ nhàng.", "url": "#", "color": "#b9a4ff" }
+  ]
+}

@@ -30,7 +30,7 @@ addEventListener('pointermove', e => {
 });
 
 // Card nghiêng 3D
-document.querySelectorAll('.tilt').forEach(card => {
+const tilt = card => {
   card.addEventListener('pointermove', e => {
     if (still) return;
     const b = card.getBoundingClientRect();
@@ -38,7 +38,7 @@ document.querySelectorAll('.tilt').forEach(card => {
     card.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg) translateY(-6px)`;
   });
   card.addEventListener('pointerleave', () => card.style.transform = '');
-});
+};
 
 // Click để bắn tia sáng
 const cols = ['#ffb38a', '#8ff0c8', '#b9a4ff', '#ff8fb8'];
@@ -77,3 +77,18 @@ size(); addEventListener('resize', size);
   });
   requestAnimationFrame(loop);
 })();
+
+// Đọc data.json: dự án + thông tin liên hệ
+const mk = (tag, text, cls) => { const e = document.createElement(tag); if (text) e.textContent = text; if (cls) e.className = cls; return e; };
+const safe = u => /^(https?:|mailto:|#|\.{0,2}\/)/.test(u || '') ? u : '#';
+const link = (a, u) => { a.href = safe(u); if (/^https?:/.test(u)) { a.target = '_blank'; a.rel = 'noopener'; } return a; };
+fetch('data.json').then(r => { if (!r.ok) throw 0; return r.json(); }).then(({ contact = {}, projects = [] }) => {
+  $('#projects-list').replaceChildren(...projects.map(p => {
+    const a = link(mk('a', '', 'card tilt'), p.url);
+    a.style.setProperty('--c', p.color || '#b9a4ff');
+    a.append(mk('div', '', 'thumb'), mk('h3', p.title), mk('p', p.description));
+    tilt(a); return a;
+  }));
+  const m = $('#mail'); m.textContent = contact.email || ''; m.href = 'mailto:' + (contact.email || '');
+  $('#links').replaceChildren(...(contact.links || []).map(l => link(mk('a', l.label), l.url)));
+}).catch(() => $('#projects-list').replaceChildren(mk('p', 'Không đọc được data.json. Hãy mở trang qua server (Live Server, npx serve) hoặc deploy lên Vercel.')));
