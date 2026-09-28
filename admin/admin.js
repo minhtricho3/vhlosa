@@ -6,7 +6,7 @@ const PASSPHRASE = 'osa2026';
 const DRAFT_KEY = 'osa_admin_draft';
 const PREVIEW_KEY = 'osa_preview_content';
 
-let state = { profile: {}, projects: [], posts: [] };
+let state = { site: {}, profile: {}, projects: [], posts: [] };
 
 function escapeHtml(str){
   return String(str ?? '').replace(/[&<>"']/g, m => ({
@@ -48,6 +48,34 @@ async function loadInitialState(){
 
 function saveDraft(){
   localStorage.setItem(DRAFT_KEY, JSON.stringify(state));
+}
+
+function normalizeState(){
+  state.site = state.site || {};
+  if (typeof state.site.maintenanceMode !== 'boolean') state.site.maintenanceMode = false;
+  if (typeof state.site.maintenanceMessage !== 'string') state.site.maintenanceMessage = '';
+  state.profile = state.profile || {};
+  state.projects = state.projects || [];
+  state.posts = state.posts || [];
+}
+
+/* ---------------- Maintenance form ---------------- */
+function bindMaintenanceForm(){
+  const modeInput = document.getElementById('f-maintenanceMode');
+  const messageInput = document.getElementById('f-maintenanceMessage');
+  modeInput.addEventListener('change', () => {
+    state.site.maintenanceMode = modeInput.checked;
+    saveDraft();
+  });
+  messageInput.addEventListener('input', () => {
+    state.site.maintenanceMessage = messageInput.value;
+    saveDraft();
+  });
+}
+
+function populateMaintenanceForm(){
+  document.getElementById('f-maintenanceMode').checked = !!state.site.maintenanceMode;
+  document.getElementById('f-maintenanceMessage').value = state.site.maintenanceMessage || '';
 }
 
 /* ---------------- Profile form ---------------- */
@@ -183,15 +211,12 @@ document.getElementById('addPost').addEventListener('click', () => {
 document.getElementById('resetBtn').addEventListener('click', async () => {
   if (!confirm('Khôi phục toàn bộ nội dung về mặc định? Bản nháp hiện tại sẽ mất.')) return;
   state = await fetchDefaults();
+  normalizeState();
+  populateMaintenanceForm();
   populateProfileForm();
   renderProjects();
   renderPosts();
   saveDraft();
-});
-
-document.getElementById('previewBtn').addEventListener('click', () => {
-  localStorage.setItem(PREVIEW_KEY, JSON.stringify(state));
-  window.open('../index.html', '_blank');
 });
 
 document.getElementById('exportBtn').addEventListener('click', () => {
@@ -211,9 +236,8 @@ document.getElementById('importFile').addEventListener('change', (e) => {
   reader.onload = () => {
     try {
       state = JSON.parse(reader.result);
-      state.projects = state.projects || [];
-      state.posts = state.posts || [];
-      state.profile = state.profile || {};
+      normalizeState();
+      populateMaintenanceForm();
       populateProfileForm();
       renderProjects();
       renderPosts();
@@ -225,13 +249,20 @@ document.getElementById('importFile').addEventListener('change', (e) => {
   reader.readAsText(file);
 });
 
+document.getElementById('previewLinks').addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-path]');
+  if (!btn) return;
+  localStorage.setItem(PREVIEW_KEY, JSON.stringify(state));
+  window.open(btn.dataset.path, '_blank');
+});
+
 /* ---------------- Init ---------------- */
 async function initEditor(){
   state = await loadInitialState();
-  state.projects = state.projects || [];
-  state.posts = state.posts || [];
-  state.profile = state.profile || {};
+  normalizeState();
+  bindMaintenanceForm();
   bindProfileForm();
+  populateMaintenanceForm();
   populateProfileForm();
   renderProjects();
   renderPosts();

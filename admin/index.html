@@ -19,7 +19,7 @@
     <p>Nhập mật khẩu để chỉnh sửa nội dung.</p>
     <input type="password" id="gatePassword" placeholder="Mật khẩu" autocomplete="off" />
     <button id="gateSubmit" class="btn btn-primary">Vào</button>
-    <p class="gate-note">Đây chỉ là lớp chặn ở trình duyệt — trang này không có server nên không phải bảo mật thật. Đừng dùng để bảo vệ dữ liệu nhạy cảm; xem README để biết cách chặn truy cập thật sự.</p>
+    <p class="gate-note">Đây chỉ là lớp chặn ở trình duyệt — trang này không có server nên không phải bảo mật thật. Xem README để biết cách chặn truy cập thật sự.</p>
   </div>
 </div>
 
@@ -32,15 +32,35 @@
         <input type="file" id="importFile" accept="application/json" hidden />
       </label>
       <button id="resetBtn" class="btn btn-ghost btn-small">Khôi phục mặc định</button>
-      <button id="previewBtn" class="btn btn-ghost btn-small">Xem trước</button>
       <button id="exportBtn" class="btn btn-primary btn-small">Tải content.json</button>
     </div>
   </header>
 
   <p class="admin-hint">
     Chỉnh xong, bấm <strong>Tải content.json</strong> rồi thay file <code>data/content.json</code> trong project và deploy lại
-    (push lên GitHub, hoặc kéo thả lại thư mục vào Vercel). "Xem trước" chỉ hiển thị tạm trong trình duyệt này, chưa lưu vào file.
+    (push lên GitHub, hoặc kéo thả lại thư mục vào Vercel). Các nút "Xem trước" bên dưới chỉ hiển thị tạm trong trình duyệt này.
   </p>
+
+  <div class="preview-row" id="previewLinks">
+    <span class="preview-label">Xem trước:</span>
+    <button type="button" class="btn btn-ghost btn-small" data-path="/">Trang chủ</button>
+    <button type="button" class="btn btn-ghost btn-small" data-path="/about">Giới thiệu</button>
+    <button type="button" class="btn btn-ghost btn-small" data-path="/work">Dự án</button>
+    <button type="button" class="btn btn-ghost btn-small" data-path="/blog">Blog</button>
+    <button type="button" class="btn btn-ghost btn-small" data-path="/contact">Liên hệ</button>
+  </div>
+
+  <section class="admin-section maintenance-section">
+    <h2>Chế độ bảo trì</h2>
+    <label class="switch">
+      <input type="checkbox" id="f-maintenanceMode" />
+      <span class="switch-track"><span class="switch-thumb"></span></span>
+      Bật chế độ bảo trì (ẩn toàn bộ trang, hiện thông báo thay thế)
+    </label>
+    <label class="full">Thông báo hiển thị khi bảo trì
+      <textarea id="f-maintenanceMessage" rows="2"></textarea>
+    </label>
+  </section>
 
   <section class="admin-section">
     <h2>Thông tin chung</h2>
@@ -57,7 +77,7 @@
       <label class="full">Mô tả ngắn ở trang chủ
         <textarea id="f-lede" rows="2"></textarea>
       </label>
-      <label class="full">Giới thiệu (phần About)
+      <label class="full">Giới thiệu (trang Giới thiệu)
         <textarea id="f-bio" rows="4"></textarea>
       </label>
       <label class="full">Kỹ năng (cách nhau bằng dấu phẩy)
@@ -72,7 +92,7 @@
       <label>LinkedIn URL
         <input type="url" id="f-linkedin" />
       </label>
-      <label class="full">Câu mở đầu phần Liên hệ
+      <label class="full">Câu mở đầu trang Liên hệ
         <textarea id="f-contactText" rows="2"></textarea>
       </label>
       <div class="full avatar-field">

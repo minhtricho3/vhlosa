@@ -1,9 +1,13 @@
 {
+  "site": {
+    "maintenanceMode": false,
+    "maintenanceMessage": "Trang đang được nâng cấp một chút, quay lại sau nhé!"
+  },
   "profile": {
     "name": "Osa",
     "kicker": "Xin chào, mình là",
     "role": "Software Engineer — xây dựng sản phẩm web nhanh, gọn và đáng tin cậy.",
-    "lede": "Mình thích những hệ thống chạy êm, những giao diện dễ dùng, và việc viết lại thứ gì đó cho tới khi nó thật sự đơn giản. Ngoài code, mình hay viết lại những gì học được ở phần Blog bên dưới.",
+    "lede": "Mình thích những hệ thống chạy êm, những giao diện dễ dùng, và việc viết lại thứ gì đó cho tới khi nó thật sự đơn giản. Ngoài code, mình hay viết lại những gì học được ở phần Blog.",
     "bio": "Mình là Osa, kỹ sư phần mềm tập trung vào phát triển web full-stack. Mình thích làm việc ở những chi tiết nhỏ — hiệu năng tải trang, trạng thái rỗng, animation vừa đủ — vì đó thường là thứ người dùng cảm nhận được nhiều nhất dù không gọi tên ra được. Phần lớn thời gian mình làm việc với JavaScript/TypeScript, nhưng cũng thoải mái nhảy sang backend hoặc hạ tầng khi cần.",
     "skills": ["TypeScript", "React", "Node.js", "Go", "PostgreSQL", "Docker", "AWS", "GraphQL"],
     "avatar": "",

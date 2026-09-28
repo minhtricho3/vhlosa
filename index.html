@@ -13,16 +13,18 @@
 </head>
 <body>
 
+<div class="ambient" aria-hidden="true"><span class="blob blob-1"></span><span class="blob blob-2"></span></div>
+
 <header class="site-header">
-  <a href="#home" class="brand">Osa</a>
+  <a href="/" class="brand">Osa</a>
   <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList" aria-label="Mở menu">
     <span></span><span></span><span></span>
   </button>
   <nav class="site-nav" id="navList">
-    <a href="#about" data-nav>Giới thiệu</a>
-    <a href="#work" data-nav>Dự án</a>
-    <a href="#blog" data-nav>Blog</a>
-    <a href="#contact" data-nav>Liên hệ</a>
+    <a href="/about" data-nav>Giới thiệu</a>
+    <a href="/work" data-nav>Dự án</a>
+    <a href="/blog" data-nav>Blog</a>
+    <a href="/contact" data-nav>Liên hệ</a>
   </nav>
 </header>
 
@@ -32,54 +34,82 @@
 
   <section id="home" class="section hero">
     <span class="node"></span>
-    <img id="avatar" class="avatar" alt="Ảnh đại diện" />
-    <div id="avatarFallback" class="avatar avatar-fallback" aria-hidden="true"></div>
+    <div class="avatar-frame">
+      <img id="avatar" class="avatar" alt="Ảnh đại diện" />
+      <div id="avatarFallback" class="avatar avatar-fallback" aria-hidden="true"></div>
+      <svg class="avatar-fx" viewBox="0 0 128 128" aria-hidden="true">
+        <!-- Viền đỏ rung -->
+        <circle class="anger-border" cx="64" cy="64" r="60" fill="none" stroke="#e00000" stroke-width="4" stroke-dasharray="85 25 45 18" stroke-linecap="round" />
+        <circle class="anger-border" cx="64" cy="64" r="52" fill="none" stroke="#b80000" stroke-width="2" stroke-dasharray="50 35 70 20" opacity="0.8" />
+        <!-- Dấu giận (4 mảnh, mỗi mảnh rung lệch nhịp) -->
+        <g transform="translate(96, 22)">
+          <path class="anger-part part-1" d="M 0,-14 Q 4,-6 2,0 Q 0,1.5 -2,0 Q -4,-6 0,-14 Z" fill="#e00000" />
+          <path class="anger-part part-2" d="M 14,0 Q 6,4 0,2 Q -1.5,0 0,-2 Q 6,-4 14,0 Z" fill="#e00000" />
+          <path class="anger-part part-3" d="M 0,14 Q -4,6 -2,0 Q 0,-1.5 2,0 Q 4,6 0,14 Z" fill="#e00000" />
+          <path class="anger-part part-4" d="M -14,0 Q -6,-4 0,-2 Q 1.5,0 0,2 Q -6,4 -14,0 Z" fill="#e00000" />
+        </g>
+        <!-- Bong bóng dấu ! -->
+        <g class="anger-bubble">
+          <circle cx="108" cy="92" r="16" fill="#fff" />
+          <rect x="105.5" y="82.4" width="5" height="16" rx="2.5" fill="#171717" />
+          <circle cx="108" cy="104.8" r="2.5" fill="#171717" />
+        </g>
+      </svg>
+    </div>
     <p class="kicker" id="kicker"></p>
     <h1 id="name"></h1>
     <p class="role" id="role"></p>
     <p class="lede" id="lede"></p>
     <div class="cta-row">
-      <a href="#work" class="btn btn-primary">Xem dự án</a>
-      <a href="#contact" class="btn btn-ghost">Liên hệ</a>
+      <a href="/work" class="btn btn-primary">Xem dự án</a>
+      <a href="/contact" class="btn btn-ghost">Liên hệ</a>
     </div>
   </section>
 
-  <section id="about" class="section">
+  <section class="section">
     <span class="node"></span>
-    <h2>Giới thiệu</h2>
-    <div class="about-grid">
-      <p class="about-text" id="bio"></p>
-      <ul class="skills" id="skills"></ul>
+    <div class="teaser-head">
+      <h2>Giới thiệu</h2>
+      <a href="/about" class="teaser-link">Xem thêm</a>
     </div>
+    <p class="teaser-text" id="aboutTeaser"></p>
   </section>
 
-  <section id="work" class="section">
+  <section class="section">
     <span class="node"></span>
-    <h2>Dự án</h2>
-    <div class="work-grid" id="workGrid"></div>
+    <div class="teaser-head">
+      <h2>Dự án nổi bật</h2>
+      <a href="/work" class="teaser-link">Xem tất cả dự án</a>
+    </div>
+    <div class="work-grid" id="workTeaser"></div>
   </section>
 
-  <section id="blog" class="section">
+  <section class="section">
     <span class="node"></span>
-    <h2>Blog</h2>
-    <div class="post-list" id="postList"></div>
+    <div class="teaser-head">
+      <h2>Bài viết mới nhất</h2>
+      <a href="/blog" class="teaser-link">Xem tất cả bài viết</a>
+    </div>
+    <div class="post-list" id="blogTeaser"></div>
   </section>
 
-  <section id="contact" class="section">
+  <section class="section">
     <span class="node"></span>
-    <h2>Liên hệ</h2>
-    <div class="contact-grid">
-      <p class="contact-text" id="contactText"></p>
-      <ul class="contact-list" id="contactList"></ul>
+    <h2>Sẵn sàng hợp tác?</h2>
+    <p class="teaser-text">Mình luôn sẵn sàng lắng nghe ý tưởng mới, dù chỉ là để trò chuyện.</p>
+    <div class="cta-row">
+      <a href="/contact" class="btn btn-primary">Liên hệ ngay</a>
     </div>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <p>© <span id="year"></span> Osa. Được xây bằng HTML, CSS và JavaScript thuần.</p>
+  <p>© <span data-year></span> Osa. Được xây bằng HTML, CSS và JavaScript thuần.</p>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/particles.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/page-home.js"></script>
 </body>
 </html>
