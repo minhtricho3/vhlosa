@@ -37,22 +37,68 @@
     <div class="avatar-frame">
       <img id="avatar" class="avatar" alt="Ảnh đại diện" />
       <div id="avatarFallback" class="avatar avatar-fallback" aria-hidden="true"></div>
-      <svg class="avatar-fx" viewBox="0 0 128 128" aria-hidden="true">
-        <!-- Viền đỏ rung -->
-        <circle class="anger-border" cx="64" cy="64" r="60" fill="none" stroke="#e00000" stroke-width="4" stroke-dasharray="85 25 45 18" stroke-linecap="round" />
-        <circle class="anger-border" cx="64" cy="64" r="52" fill="none" stroke="#b80000" stroke-width="2" stroke-dasharray="50 35 70 20" opacity="0.8" />
-        <!-- Dấu giận (4 mảnh, mỗi mảnh rung lệch nhịp) -->
-        <g transform="translate(96, 22)">
-          <path class="anger-part part-1" d="M 0,-14 Q 4,-6 2,0 Q 0,1.5 -2,0 Q -4,-6 0,-14 Z" fill="#e00000" />
-          <path class="anger-part part-2" d="M 14,0 Q 6,4 0,2 Q -1.5,0 0,-2 Q 6,-4 14,0 Z" fill="#e00000" />
-          <path class="anger-part part-3" d="M 0,14 Q -4,6 -2,0 Q 0,-1.5 2,0 Q 4,6 0,14 Z" fill="#e00000" />
-          <path class="anger-part part-4" d="M -14,0 Q -6,-4 0,-2 Q 1.5,0 0,2 Q -6,4 -14,0 Z" fill="#e00000" />
+      <svg class="avatar-fx" viewBox="0 0 160 160" aria-hidden="true">
+        <defs>
+          <radialGradient id="rageGlowGrad">
+            <stop offset="0.55" stop-color="#ff2a2a" stop-opacity="0" />
+            <stop offset="0.82" stop-color="#ff2a2a" stop-opacity="0.35" />
+            <stop offset="1" stop-color="#ff2a2a" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="arcFadeA" x1="0" y1="1" x2="0.7" y2="0">
+            <stop offset="0" stop-color="#ff2a2a" stop-opacity="0" />
+            <stop offset="0.5" stop-color="#ff2a2a" stop-opacity="1" />
+            <stop offset="1" stop-color="#b80000" stop-opacity="0.1" />
+          </linearGradient>
+          <linearGradient id="arcFadeB" x1="1" y1="0" x2="0.3" y2="1">
+            <stop offset="0" stop-color="#ff2a2a" stop-opacity="0" />
+            <stop offset="0.5" stop-color="#e00000" stop-opacity="1" />
+            <stop offset="1" stop-color="#ff2a2a" stop-opacity="0.1" />
+          </linearGradient>
+          <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="noise">
+              <animate attributeName="seed" values="1;3;5;7;9;11" dur="0.72s" calcMode="discrete" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+
+        <!-- Quầng nóng -->
+        <circle class="rage-glow" cx="80" cy="80" r="78" fill="url(#rageGlowGrad)" />
+
+        <!-- Nét cung đỏ vẽ tay -->
+        <g class="rage-arcs">
+          <path class="arc arc-a" d="M 19.9 101.9 A 64 64 0 0 1 91.1 17" stroke="url(#arcFadeA)" stroke-width="3.2" />
+          <path class="arc arc-b" d="M 145.8 56.1 A 70 70 0 0 1 67.8 148.9" stroke="url(#arcFadeB)" stroke-width="3.2" />
+          <path class="arc arc-c" d="M 22.9 69.9 A 58 58 0 0 1 60.2 25.5" stroke="#ff2a2a" stroke-width="1.5" opacity="0.8" />
+          <path class="arc arc-d" d="M 152.9 92.8 A 74 74 0 0 1 117 144.1" stroke="#ff2a2a" stroke-width="1.5" opacity="0.8" />
         </g>
-        <!-- Bong bóng dấu ! -->
-        <g class="anger-bubble">
-          <circle cx="108" cy="92" r="16" fill="#fff" />
-          <rect x="105.5" y="82.4" width="5" height="16" rx="2.5" fill="#171717" />
-          <circle cx="108" cy="104.8" r="2.5" fill="#171717" />
+
+        <!-- Tàn lửa -->
+        <circle class="ember" cx="50" cy="26" r="2" style="--ex:-6px;--ey:-20px;--d:0s" />
+        <circle class="ember" cx="72" cy="18" r="1.6" style="--ex:4px;--ey:-22px;--d:.5s" />
+        <circle class="ember" cx="94" cy="22" r="2.4" style="--ex:-3px;--ey:-24px;--d:1s" />
+        <circle class="ember" cx="36" cy="46" r="1.8" style="--ex:-12px;--ey:-14px;--d:1.4s" />
+        <circle class="ember" cx="118" cy="62" r="1.6" style="--ex:12px;--ey:-14px;--d:.8s" />
+        <circle class="ember" cx="60" cy="140" r="1.6" style="--ex:-8px;--ey:-16px;--d:1.9s" />
+
+        <!-- Dấu giận: 4 mảnh -->
+        <g transform="translate(124 32) scale(1.2)">
+          <g class="anger-wobble">
+            <path class="anger-part part-1" d="M 3.5,-12 Q 12,-12 12,-3.5 Q 7,-7 3.5,-12 Z" />
+            <path class="anger-part part-2" d="M -3.5,-12 Q -12,-12 -12,-3.5 Q -7,-7 -3.5,-12 Z" />
+            <path class="anger-part part-3" d="M 3.5,12 Q 12,12 12,3.5 Q 7,7 3.5,12 Z" />
+            <path class="anger-part part-4" d="M -3.5,12 Q -12,12 -12,3.5 Q -7,7 -3.5,12 Z" />
+          </g>
+        </g>
+
+        <!-- Bong bóng ! -->
+        <g transform="translate(128 124)">
+          <g class="bang-bubble">
+            <path d="M -14 9 L -23 19 L -3 15 Z" fill="#fff" />
+            <circle r="17" fill="#fff" />
+            <rect x="-2.5" y="-10" width="5" height="13" rx="2.5" fill="#171717" />
+            <circle cy="8" r="2.8" fill="#171717" />
+          </g>
         </g>
       </svg>
     </div>

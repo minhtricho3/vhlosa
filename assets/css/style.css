@@ -260,20 +260,23 @@ main{ position: relative; z-index: 1; }
   font-size: 2.2rem;
 }
 
-/* ---------- Avatar frame (angry ring + "!" badge) ---------- */
+/* ---------- Avatar frame: khung giận dữ ---------- */
 .avatar-frame{
   position: relative;
-  width: 128px;
-  height: 128px;
-  margin-bottom: 24px;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 16px;
 }
 .avatar-frame .avatar,
 .avatar-frame .avatar-fallback{
   position: absolute;
-  top: 20px; left: 20px;
-  width: 88px; height: 88px;
+  top: 30px; left: 30px;
+  width: 100px; height: 100px;
   margin-bottom: 0;
+  border-color: rgba(224, 0, 0, .55);
+  animation: rageJitter 3.2s linear infinite, rageGlow 1.4s ease-in-out infinite alternate;
 }
+.avatar-frame .avatar-fallback{ font-size: 2.6rem; }
 .avatar-fx{
   position: absolute;
   inset: 0;
@@ -283,40 +286,114 @@ main{ position: relative; z-index: 1; }
   overflow: visible;
 }
 
-/* dấu giận (nếu thêm các mảnh .anger-part .part-1..4 sau này, style đã sẵn) */
-.anger-part,
-.anger-bubble{
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: angerPulse .8s ease-in-out infinite alternate;
+/* avatar run nhẹ từng đợt + đỏ rực nhấp nháy */
+@keyframes rageJitter{
+  0%, 68%, 100%{ transform: translate(0, 0); }
+  70%{ transform: translate(-1.5px, 1px); }
+  72%{ transform: translate(1.5px, -1px); }
+  74%{ transform: translate(-1px, -1.5px); }
+  76%{ transform: translate(1.5px, 1px); }
+  78%{ transform: translate(-1.5px, 0); }
+  80%{ transform: translate(1px, 1px); }
+  82%{ transform: translate(0, 0); }
 }
-.part-1{ animation-delay: 0s; }
-.part-2{ animation-delay: .08s; }
-.part-3{ animation-delay: .16s; }
-.part-4{ animation-delay: .24s; }
-.anger-bubble{ animation-delay: 0s; }
-
-@keyframes angerPulse{
-  0%{ transform: scale(.7); }
-  100%{ transform: scale(1.2); }
+@keyframes rageGlow{
+  from{ box-shadow: 0 0 10px rgba(255, 40, 40, .3); }
+  to{ box-shadow: 0 0 28px rgba(255, 40, 40, .75); }
 }
 
-.anger-border{
+/* quầng nóng phía sau */
+.rage-glow{
   transform-box: fill-box;
   transform-origin: center;
-  animation: borderShake 1.8s ease-in-out infinite;
+  animation: glowPulse 1.4s ease-in-out infinite alternate;
 }
-@keyframes borderShake{
-  0%, 100%{ transform: rotate(0deg) translate(0, 0); }
-  20%{ transform: rotate(-1.2deg) translate(-1px, .5px); }
-  40%{ transform: rotate(1deg) translate(1px, -.5px); }
-  60%{ transform: rotate(-.8deg) translate(-.5px, .5px); }
-  80%{ transform: rotate(.8deg) translate(.5px, -.5px); }
+@keyframes glowPulse{
+  from{ opacity: .45; transform: scale(.94); }
+  to{ opacity: 1; transform: scale(1.06); }
 }
+
+/* các nét cung đỏ: đung đưa + nét vẽ tay "sôi" (filter #wobble) */
+.rage-arcs{ filter: url(#wobble) drop-shadow(0 0 3px rgba(255, 30, 30, .8)); }
+.arc{
+  fill: none;
+  stroke-linecap: round;
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+}
+.arc-a{ animation: arcSwayA 2.6s ease-in-out infinite; }
+.arc-b{ animation: arcSwayB 3.1s ease-in-out infinite; }
+.arc-c{ animation: arcSwayB 2.2s ease-in-out infinite; }
+.arc-d{ animation: arcSwayA 2.9s ease-in-out infinite; }
+@keyframes arcSwayA{
+  0%, 100%{ transform: rotate(-5deg); opacity: .85; }
+  50%{ transform: rotate(6deg); opacity: 1; }
+}
+@keyframes arcSwayB{
+  0%, 100%{ transform: rotate(5deg); opacity: 1; }
+  50%{ transform: rotate(-6deg); opacity: .8; }
+}
+
+/* tàn lửa bay lên */
+.ember{
+  fill: #ff5a2a;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: emberRise 2.4s ease-out infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes emberRise{
+  0%{ opacity: 0; transform: translate(0, 0) scale(.4); }
+  15%{ opacity: 1; }
+  100%{ opacity: 0; transform: translate(var(--ex, 0), var(--ey, -20px)) scale(1.2); }
+}
+
+/* dấu giận 💢: 4 mảnh bung ra - co vào lệch nhịp */
+.anger-wobble{
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: markWobble .5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 3px rgba(255, 40, 40, .9));
+}
+@keyframes markWobble{
+  from{ transform: rotate(-7deg) scale(1); }
+  to{ transform: rotate(7deg) scale(1.1); }
+}
+.anger-part{
+  fill: #ff1f1f;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: angerBurst .7s ease-in-out infinite alternate;
+}
+.part-1{ --dx: 2.5px;  --dy: -2.5px; animation-delay: 0s; }
+.part-2{ --dx: -2.5px; --dy: -2.5px; animation-delay: .08s; }
+.part-3{ --dx: 2.5px;  --dy: 2.5px;  animation-delay: .16s; }
+.part-4{ --dx: -2.5px; --dy: 2.5px;  animation-delay: .24s; }
+@keyframes angerBurst{
+  from{ transform: translate(0, 0) scale(.75); }
+  to{ transform: translate(var(--dx), var(--dy)) scale(1.15); }
+}
+
+/* bong bóng ! nảy lắc */
+.bang-bubble{
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bangPop .9s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, .35));
+}
+@keyframes bangPop{
+  from{ transform: scale(.9) rotate(-8deg); }
+  to{ transform: scale(1.12) rotate(8deg); }
+}
+
 @media (prefers-reduced-motion: reduce){
-  .anger-part, .anger-bubble, .anger-border{ animation: none; }
+  .avatar-frame .avatar,
+  .avatar-frame .avatar-fallback,
+  .rage-glow, .arc, .ember, .anger-wobble, .anger-part, .bang-bubble{ animation: none; }
+  .ember{ opacity: 0; }
+  .rage-arcs{ filter: none; }
 }
-
 
 .kicker{ font-family: var(--font-mono); color: var(--text-muted); margin: 0 0 8px; font-size: .95rem; }
 .hero h1{
