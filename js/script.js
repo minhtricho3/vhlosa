@@ -3,7 +3,7 @@ const still = false;
 $('#y').textContent = new Date().getFullYear();
 
 // Gõ chữ luân phiên (sửa danh sách vai trò ở đây)
-const roles = ['web developer', 'UI designer', 'người thích chill', 'dân mê lo-fi'];
+const roles = ['Nhà cung cấp Hosting', 'UI designer', 'Coder', 'Biker'];
 const out = $('#type');
 let r = 0, c = 0, del = false;
 (function type() {
