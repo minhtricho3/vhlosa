@@ -1,161 +1,78 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Osa — Software Engineer</title>
-<meta name="description" content="Trang cá nhân của Osa: dự án, bài viết và thông tin liên hệ." />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0e14'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23ff9d3d'/%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Osa · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!-- Đổi ảnh nền: thay file assets/background.jpg | Đổi avatar: thay file assets/avatar.png -->
+<div class="bg"></div>
+<div class="glow"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
 
-<div class="ambient" aria-hidden="true"><span class="blob blob-1"></span><span class="blob blob-2"></span></div>
+<nav>
+  <a href="#home" class="logo">osa<i>.</i></a>
+  <div><a href="#about">Về mình</a><a href="#skills">Kỹ năng</a><a href="#projects">Dự án</a><a href="#contact">Liên hệ</a></div>
+</nav>
 
-<header class="site-header">
-  <a href="/" class="brand">Osa</a>
-  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList" aria-label="Mở menu">
-    <span></span><span></span><span></span>
-  </button>
-  <nav class="site-nav" id="navList">
-    <a href="/about" data-nav>Giới thiệu</a>
-    <a href="/work" data-nav>Dự án</a>
-    <a href="/blog" data-nav>Blog</a>
-    <a href="/contact" data-nav>Liên hệ</a>
-  </nav>
+<header class="hero" id="home">
+  <div class="hero-text">
+    <p class="hi">chào, mình là</p>
+    <h1 class="name" aria-label="Osa"><span>O</span><span>s</span><span>a</span></h1>
+    <p class="role">một <b id="type"></b><i class="caret"></i></p>
+    <p class="lead">Mình làm những trang web <mark class="hl">nhẹ nhàng</mark>, <mark class="hl h2">dễ chịu</mark> và có chút <mark class="hl h3">chuyển động</mark> để người xem muốn ở lại thêm một lúc.</p>
+    <div class="cta"><a class="btn" href="#projects">Xem dự án</a><a class="btn ghost" href="#contact">Nói chuyện với mình</a></div>
+  </div>
+  <div class="avatar-wrap">
+    <div class="blob"></div><div class="ring"></div>
+    <img class="avatar" src="assets/avatar.png" alt="Ảnh đại diện của Osa">
+    <span class="chip c1">☕ cà phê sáng</span>
+    <span class="chip c2">🎧 lo-fi</span>
+    <span class="chip c3">🌙 code đêm</span>
+  </div>
 </header>
 
-<div class="trace" aria-hidden="true"><span class="trace-pulse"></span></div>
-
 <main>
+  <section id="about" class="rv">
+    <h2>Về <mark class="hl">mình</mark></h2>
+    <p>Mình là Osa. Mình thích <mark class="hl h2">thiết kế giao diện</mark> và biến ý tưởng thành sản phẩm chạy mượt. Lúc rảnh mình nghe nhạc, chụp ảnh đường phố và <mark class="hl h3">thử công cụ mới</mark>.</p>
+    <p>Mình tin một trang web tốt phải đẹp, nhanh và không làm người dùng mệt. Sửa đoạn này thành câu chuyện của bạn nhé.</p>
+  </section>
 
-  <section id="home" class="section hero">
-    <span class="node"></span>
-    <div class="avatar-frame">
-      <img id="avatar" class="avatar" alt="Ảnh đại diện" />
-      <div id="avatarFallback" class="avatar avatar-fallback" aria-hidden="true"></div>
-      <svg class="avatar-fx" viewBox="0 0 160 160" aria-hidden="true">
-        <defs>
-          <radialGradient id="rageGlowGrad">
-            <stop offset="0.55" stop-color="#ff2a2a" stop-opacity="0" />
-            <stop offset="0.82" stop-color="#ff2a2a" stop-opacity="0.35" />
-            <stop offset="1" stop-color="#ff2a2a" stop-opacity="0" />
-          </radialGradient>
-          <linearGradient id="arcFadeA" x1="0" y1="1" x2="0.7" y2="0">
-            <stop offset="0" stop-color="#ff2a2a" stop-opacity="0" />
-            <stop offset="0.5" stop-color="#ff2a2a" stop-opacity="1" />
-            <stop offset="1" stop-color="#b80000" stop-opacity="0.1" />
-          </linearGradient>
-          <linearGradient id="arcFadeB" x1="1" y1="0" x2="0.3" y2="1">
-            <stop offset="0" stop-color="#ff2a2a" stop-opacity="0" />
-            <stop offset="0.5" stop-color="#e00000" stop-opacity="1" />
-            <stop offset="1" stop-color="#ff2a2a" stop-opacity="0.1" />
-          </linearGradient>
-          <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="noise">
-              <animate attributeName="seed" values="1;3;5;7;9;11" dur="0.72s" calcMode="discrete" repeatCount="indefinite" />
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-        </defs>
+  <section id="skills" class="rv">
+    <h2>Kỹ <mark class="hl h3">năng</mark></h2>
+    <div class="marquee"><div class="track">
+      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Node.js</span><span>Figma</span><span>Git</span>
+      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Node.js</span><span>Figma</span><span>Git</span>
+    </div></div>
+    <div class="marquee rev"><div class="track">
+      <span>Animation</span><span>UI/UX</span><span>Responsive</span><span>Tailwind</span><span>TypeScript</span><span>API</span><span>SEO</span>
+      <span>Animation</span><span>UI/UX</span><span>Responsive</span><span>Tailwind</span><span>TypeScript</span><span>API</span><span>SEO</span>
+    </div></div>
+  </section>
 
-        <!-- Quầng nóng -->
-        <circle class="rage-glow" cx="80" cy="80" r="78" fill="url(#rageGlowGrad)" />
-
-        <!-- Nét cung đỏ vẽ tay -->
-        <g class="rage-arcs">
-          <path class="arc arc-a" d="M 19.9 101.9 A 64 64 0 0 1 91.1 17" stroke="url(#arcFadeA)" stroke-width="3.2" />
-          <path class="arc arc-b" d="M 145.8 56.1 A 70 70 0 0 1 67.8 148.9" stroke="url(#arcFadeB)" stroke-width="3.2" />
-          <path class="arc arc-c" d="M 22.9 69.9 A 58 58 0 0 1 60.2 25.5" stroke="#ff2a2a" stroke-width="1.5" opacity="0.8" />
-          <path class="arc arc-d" d="M 152.9 92.8 A 74 74 0 0 1 117 144.1" stroke="#ff2a2a" stroke-width="1.5" opacity="0.8" />
-        </g>
-
-        <!-- Tàn lửa -->
-        <circle class="ember" cx="50" cy="26" r="2" style="--ex:-6px;--ey:-20px;--d:0s" />
-        <circle class="ember" cx="72" cy="18" r="1.6" style="--ex:4px;--ey:-22px;--d:.5s" />
-        <circle class="ember" cx="94" cy="22" r="2.4" style="--ex:-3px;--ey:-24px;--d:1s" />
-        <circle class="ember" cx="36" cy="46" r="1.8" style="--ex:-12px;--ey:-14px;--d:1.4s" />
-        <circle class="ember" cx="118" cy="62" r="1.6" style="--ex:12px;--ey:-14px;--d:.8s" />
-        <circle class="ember" cx="60" cy="140" r="1.6" style="--ex:-8px;--ey:-16px;--d:1.9s" />
-
-        <!-- Dấu giận: 4 mảnh -->
-        <g transform="translate(124 32) scale(1.2)">
-          <g class="anger-wobble">
-            <path class="anger-part part-1" d="M 3.5,-12 Q 12,-12 12,-3.5 Q 7,-7 3.5,-12 Z" />
-            <path class="anger-part part-2" d="M -3.5,-12 Q -12,-12 -12,-3.5 Q -7,-7 -3.5,-12 Z" />
-            <path class="anger-part part-3" d="M 3.5,12 Q 12,12 12,3.5 Q 7,7 3.5,12 Z" />
-            <path class="anger-part part-4" d="M -3.5,12 Q -12,12 -12,3.5 Q -7,7 -3.5,12 Z" />
-          </g>
-        </g>
-
-        <!-- Bong bóng ! -->
-        <g transform="translate(128 124)">
-          <g class="bang-bubble">
-            <path d="M -14 9 L -23 19 L -3 15 Z" fill="#fff" />
-            <circle r="17" fill="#fff" />
-            <rect x="-2.5" y="-10" width="5" height="13" rx="2.5" fill="#171717" />
-            <circle cy="8" r="2.8" fill="#171717" />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <p class="kicker" id="kicker"></p>
-    <h1 id="name"></h1>
-    <p class="role" id="role"></p>
-    <p class="lede" id="lede"></p>
-    <div class="cta-row">
-      <a href="/work" class="btn btn-primary">Xem dự án</a>
-      <a href="/contact" class="btn btn-ghost">Liên hệ</a>
+  <section id="projects" class="rv">
+    <h2>Dự <mark class="hl h2">án</mark></h2>
+    <div class="grid">
+      <a class="card tilt" href="#" style="--c:#ffb38a"><div class="thumb"></div><h3>Trang bán hàng Mây</h3><p>Cửa hàng nhỏ với giao diện pastel và giỏ hàng mượt.</p></a>
+      <a class="card tilt" href="#" style="--c:#8ff0c8"><div class="thumb"></div><h3>Ứng dụng ghi chú Đêm</h3><p>Ghi chú nhanh, chế độ tối và đồng bộ theo thời gian thực.</p></a>
+      <a class="card tilt" href="#" style="--c:#b9a4ff"><div class="thumb"></div><h3>Blog ảnh Phố nhỏ</h3><p>Bộ sưu tập ảnh đường phố với hiệu ứng cuộn nhẹ nhàng.</p></a>
     </div>
   </section>
 
-  <section class="section">
-    <span class="node"></span>
-    <div class="teaser-head">
-      <h2>Giới thiệu</h2>
-      <a href="/about" class="teaser-link">Xem thêm</a>
-    </div>
-    <p class="teaser-text" id="aboutTeaser"></p>
+  <section id="contact" class="rv">
+    <h2>Cùng làm gì đó <mark class="hl">vui</mark> nhé</h2>
+    <p>Gửi mình một dòng qua <mark class="hl h2"><a href="mailto:osa@example.com">osa@example.com</a></mark> hoặc ghé các kênh bên dưới.</p>
+    <div class="links"><a href="#">GitHub</a><a href="#">Instagram</a><a href="#">Facebook</a></div>
   </section>
-
-  <section class="section">
-    <span class="node"></span>
-    <div class="teaser-head">
-      <h2>Dự án nổi bật</h2>
-      <a href="/work" class="teaser-link">Xem tất cả dự án</a>
-    </div>
-    <div class="work-grid" id="workTeaser"></div>
-  </section>
-
-  <section class="section">
-    <span class="node"></span>
-    <div class="teaser-head">
-      <h2>Bài viết mới nhất</h2>
-      <a href="/blog" class="teaser-link">Xem tất cả bài viết</a>
-    </div>
-    <div class="post-list" id="blogTeaser"></div>
-  </section>
-
-  <section class="section">
-    <span class="node"></span>
-    <h2>Sẵn sàng hợp tác?</h2>
-    <p class="teaser-text">Mình luôn sẵn sàng lắng nghe ý tưởng mới, dù chỉ là để trò chuyện.</p>
-    <div class="cta-row">
-      <a href="/contact" class="btn btn-primary">Liên hệ ngay</a>
-    </div>
-  </section>
-
 </main>
 
-<footer class="site-footer">
-  <p>© <span data-year></span> Osa. Được xây bằng HTML, CSS và JavaScript thuần.</p>
-</footer>
-
-<script src="assets/js/particles.js"></script>
-<script src="assets/js/site.js"></script>
-<script src="assets/js/page-home.js"></script>
+<footer>© <span id="y"></span> Osa · làm bằng chút cà phê và nhạc lo-fi</footer>
+<script src="js/script.js"></script>
 </body>
 </html>
