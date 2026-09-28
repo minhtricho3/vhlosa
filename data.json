@@ -3,16 +3,16 @@
     "email": "osa@example.com",
     "links": [
       {
-        "label": "GitHub",
-        "url": "https://github.com/"
+        "label": "Discord",
+        "copy": "osa_vhl"
       },
       {
-        "label": "Instagram",
-        "url": "https://instagram.com/"
+        "label": "Zalo",
+        "copy": "0349804511"
       },
       {
         "label": "Facebook",
-        "url": "https://facebook.com/"
+        "url": "https://web.facebook.com/vhlosa"
       }
     ]
   },

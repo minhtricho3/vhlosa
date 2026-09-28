@@ -95,7 +95,19 @@ fetch('data.json').then(r => { if (!r.ok) throw 0; return r.json(); }).then(({ c
     tilt(a); return a;
   }));
   const m = $('#mail'); m.textContent = contact.email || ''; m.href = 'mailto:' + (contact.email || '');
-  $('#links').replaceChildren(...(contact.links || []).map(l => link(mk('a', l.label), l.url)));
+$('#links').replaceChildren(...(contact.links || []).map(l => {
+  const a = mk('a', l.label);
+  if (!l.copy) return link(a, l.url);
+  a.href = '#'; a.title = 'Bấm để copy';
+  a.onclick = e => {
+    e.preventDefault();
+    navigator.clipboard.writeText(l.copy).then(() => {
+      a.textContent = 'Đã copy!';
+      setTimeout(() => a.textContent = l.label, 1200);
+    });
+  };
+  return a;
+}));
   initPlayer(music);
 }).catch(() => { $('#ptitle').textContent = 'Chưa tải được nhạc'; $('#projects-list').replaceChildren(mk('p', 'Không đọc được data.json. Hãy mở trang qua server (Live Server, npx serve) hoặc deploy lên Vercel.')); });
 
