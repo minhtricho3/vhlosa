@@ -102,7 +102,7 @@ $('#links').replaceChildren(...(contact.links || []).map(l => {
   a.onclick = e => {
     e.preventDefault();
     navigator.clipboard.writeText(l.copy).then(() => {
-      a.textContent = 'Đã copy!';
+      a.textContent = 'Đã copy vao clipboard!';
       setTimeout(() => a.textContent = l.label, 1200);
     });
   };
